@@ -20,16 +20,23 @@ app.use(express.static('public'));
 
 app.get('/bookSelect', function(req, res){
 	context = {};
+	//Driver to create a list of books to display
 	fillBooks(context);
+	//Script to create event handler for when book icons are clicked
+	context.jscript = ['bookSelectScript.js'];
 	res.render('bookSelect', context); 
 });
 
-app.post('/bookSelect', function(req, res){
-	var context = {};
-
-	res.render('getOrPost', context);
+app.get('/bookSelect', function(req, res){
+	res.redirect('/renderBook/' + req.params.bookId);
 });
 
+app.get('/renderBook/:bookId', function(req, res){
+	context = {};
+	context.bookId = req.params.bookId;
+	//Renders the book id selected to be replaced with actual book render
+	res.render('renderBook', context);
+});
 
 app.use(function(req,res){
   res.status(404);
@@ -48,5 +55,30 @@ app.listen(app.get('port'), function(){
 });
 
 function fillBooks(context){
-	context.avaliableBooks = [];
+	context.bookChoices = [ 
+		{
+			"ID" : 184,
+			"icon" : "http://via.placeholder.com/300x300"
+		},
+		{
+			"ID" : 154,
+			"icon" : "http://via.placeholder.com/300x300"
+		},
+		{
+			"ID" : 174,
+			"icon" : "http://via.placeholder.com/300x300"
+		},
+		{
+			"ID" : 75,
+			"icon" : "http://via.placeholder.com/300x300"
+		},
+		{
+			"ID" : 114,
+			"icon" : "http://via.placeholder.com/300x300"
+		},
+		{
+			"ID" : 100,
+			"icon" : "http://via.placeholder.com/300x300"
+		}
+	];
 }
