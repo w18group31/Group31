@@ -18,6 +18,8 @@ app.set('port', 4037);
 
 app.use(express.static('public'));
 
+//When bookSelect is visited the book choices will be fecthed
+//and then they will be displayte to the user
 app.get('/bookSelect', function(req, res){
 	context = {};
 	//Driver to create a list of books to display
@@ -27,14 +29,17 @@ app.get('/bookSelect', function(req, res){
 	res.render('bookSelect', context); 
 });
 
-app.get('/bookSelect', function(req, res){
+//Selecting a book will send a get request back to the current page with the bookId appended
+//Which this will handle by redirection the the render page for the book
+app.get('/bookSelect/:bookId', function(req, res){
 	res.redirect('/renderBook/' + req.params.bookId);
 });
+
 
 app.get('/renderBook/:bookId', function(req, res){
 	context = {};
 	context.bookId = req.params.bookId;
-	//Renders the book id selected to be replaced with actual book render
+	//Currently displays the bookId that was selected
 	res.render('renderBook', context);
 });
 
@@ -54,6 +59,7 @@ app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
 
+//Driver function to fill book choices with placeholders
 function fillBooks(context){
 	context.bookChoices = [ 
 		{

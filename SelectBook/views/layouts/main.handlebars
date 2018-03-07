@@ -7,6 +7,7 @@
 		<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css">
 	</head>
 	<body>
+		<!--We probably dont need a proper navbar-->
 		<!--<nav>
 			<ul>
 				<li></li>
@@ -15,11 +16,16 @@
 				<li></li>
 			</ul>
 		</nav>-->
+
+		<!--Holds the main content of the page that is provided by handlebars-->
 		<div class="container">
 				{{{body}}}
 		</div>
+
+		<!--Also might need a footer-->
 		<!--<footer>
 		</footer>-->
+		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		{{#each jscript}}
 		<script type="text/javascript" src ="/js/{{this}}"></script>
