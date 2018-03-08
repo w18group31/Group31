@@ -46,13 +46,22 @@ app.get('/renderBook/:bookId', function(req, res){
 	// query book db for book id, then call callback function for response
 	DB.select.book(req.params.bookId, function(dbResult) { 
 		context.book = dbResult;
-//		console.log(context);
 
 		//Currently displays the bookId that was selected
 		res.render('renderBookContext', context);
-//		res.send(context);
 	});
 });
+
+
+// api endpoint for JSON book data
+app.get("/api/json/book/:bookId", function(req, res) {
+	// query db for book id
+	DB.select.book(req.params.bookId, function(dbResult) { 
+		// send the JSON result as the response
+		res.send(dbResult);
+	});
+});
+
 
 app.use(function(req,res){
   res.status(404);
