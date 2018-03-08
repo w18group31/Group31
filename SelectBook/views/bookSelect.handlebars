@@ -2,7 +2,7 @@
 <div class="container">
 	{{#each bookChoices}}
 	<div class="col-md-4 col-sm-6">
-		<img class="bookIcon" id = "{{ID}}" src="{{icon}}">
+		<img class="bookIcon" id = "{{ID}}" src="{{icon}}" onclick="selectBook({{ID}})">
 	</div>
 	{{/each}}
 </div>
