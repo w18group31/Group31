@@ -3,6 +3,9 @@
  * 
  */
 
+// require js file that simulates a database
+var DB = require("./fauxDB.js");
+
 var express = require('express');
 
 var app = express();
@@ -39,8 +42,16 @@ app.get('/bookSelect/:bookId', function(req, res){
 app.get('/renderBook/:bookId', function(req, res){
 	context = {};
 	context.bookId = req.params.bookId;
-	//Currently displays the bookId that was selected
-	res.render('renderBook', context);
+
+	// query book db for book id, then call callback function for response
+	DB.select.book(req.params.bookId, function(dbResult) { 
+		context.book = dbResult;
+//		console.log(context);
+
+		//Currently displays the bookId that was selected
+		res.render('renderBookContext', context);
+//		res.send(context);
+	});
 });
 
 app.use(function(req,res){
