@@ -12,6 +12,14 @@ var page;
 var started = false;
 
 
+function JSONtest(response) {
+
+    if (typeof response == "object") {
+        console.log("passes test");
+    }
+
+}
+
 // ajax function to get data from server
 function ajaxGet(url, callback) {
 	// log the url endpoint request is being sent to
@@ -25,7 +33,10 @@ function ajaxGet(url, callback) {
 	req.addEventListener("load", function(event) {
 		// save ther response to a var (this is json)
 		res = JSON.parse(req.responseText);
-		// log the resoponse to the console
+	    // log the resoponse to the console
+	    //test if JSON returned 
+		JSONtest(res);
+      
 		console.log("ajax response:", res);
 		// perform this callback function with the response once its recieved
 		callback(res);
