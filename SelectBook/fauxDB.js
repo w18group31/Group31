@@ -398,7 +398,6 @@ var books = [
 ];
 
 
-
 exports.select = {
 	book: function(tgtID, callback) {
 		for(var i = 0; i < books.length; i++) {

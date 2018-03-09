@@ -4,7 +4,7 @@
   "description": "A server that displays book options and gets selected book",
   "main": "bookSelectServer.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "Group 31",
   "license": "ISC",
