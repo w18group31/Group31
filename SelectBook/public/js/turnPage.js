@@ -35,21 +35,6 @@ function ajaxGet(url, callback) {
 	req.send();
 }
 
-// grab a book page by page number
-function getBookPage(book, pageNumber) {
-	// iterate the books pages 
-	for(var i = 0; i < book.pages.length; i++) {
-		// check if page number of book mach target page number
-		if(+book.pages[i].page === +pageNumber) {
-			// once page is found, log it to the console
-			console.log("page:", book.pages[i]);
-			// return the page
-			return book.pages[i];
-		}
-	}
-
-}
-
 // function to advance page
 function nextButton() {
 	// incriment current page by one
@@ -60,7 +45,7 @@ function nextButton() {
 	}
 
 	// fetch the new page
-	page = getBookPage(book, currentPage);
+	page = book.pages.find(pages => pages.page === currentPage);
 	// call to render the new page
 	renderPage();
 }
@@ -75,7 +60,7 @@ function backButton() {
 	}
 
 	// fetch the new page
-	page = getBookPage(book, currentPage);
+	page = book.pages.find(pages => pages.page === currentPage);
 	// call to render the new page
 	renderPage();
 }
@@ -101,6 +86,10 @@ function appendButton(container, text, onclickFunc) {
 function renderPage() {
 	// grab the location the page content shall go
 	var node = document.getElementById("page");
+	//Hide the book info if visible
+	if($('#bookInfo').is(":visible")){
+		$('#bookInfo').hide();
+	}
 	// clear it out (may be a cleaner way to do this)
 	node.innerHTML = "";	
 
@@ -126,6 +115,7 @@ function renderPage() {
 		var img = document.createElement("IMG");
 		// set the src attribute for the image
 		img.setAttribute("src", page.imgs[i].src);
+		img.classList.add("img-responsive");
 		// append the image to the page
 		node.appendChild(img);
 	}
@@ -156,7 +146,8 @@ function onload() {
 		// save the response to the book var
 		book = res;
 		// fetch the current page
-		page = getBookPage(book, currentPage);
+		page = book.pages.find(pages => pages.page === currentPage);
+
 
 		// add listener to start book btn, render page once its clicked
 		document.getElementById("start-book-btn")
