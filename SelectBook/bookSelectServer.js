@@ -42,7 +42,7 @@ app.get('/bookSelect/:bookId', function(req, res){
 app.get('/renderBook/:bookId', function(req, res){
 	context = {};
 	context.bookId = req.params.bookId;
-
+	context.jscript = ['turnPage.js'];
 	// query book db for book id, then call callback function for response
 	DB.select.book(req.params.bookId, function(dbResult) { 
 		context.book = dbResult;

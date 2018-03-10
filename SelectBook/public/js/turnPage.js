@@ -60,7 +60,8 @@ function nextButton() {
 	}
 
 	// fetch the new page
-	page = getBookPage(book, currentPage);
+	//page = getBookPage(book, currentPage);
+	page = book.pages.find(pages => pages.page === currentPage);
 	// call to render the new page
 	renderPage();
 }
@@ -75,7 +76,8 @@ function backButton() {
 	}
 
 	// fetch the new page
-	page = getBookPage(book, currentPage);
+	//page = getBookPage(book, currentPage);
+	page = book.pages.find(pages => pages.page === currentPage);
 	// call to render the new page
 	renderPage();
 }
