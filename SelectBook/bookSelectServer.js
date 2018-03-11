@@ -84,27 +84,27 @@ function fillBooks(context){
 	context.bookChoices = [ 
 		{
 			"ID" : 184,
-			"icon" : "http://via.placeholder.com/300x300"
+			"icon" : "http://via.placeholder.com/300?text=book+icon+id:184"
 		},
 		{
 			"ID" : 154,
-			"icon" : "http://via.placeholder.com/300x300"
+			"icon" : "http://via.placeholder.com/300?text=book+icon+id:154"
 		},
 		{
 			"ID" : 174,
-			"icon" : "http://via.placeholder.com/300x300"
+			"icon" : "http://via.placeholder.com/300?text=book+icon+id:174"
 		},
 		{
 			"ID" : 75,
-			"icon" : "http://via.placeholder.com/300x300"
+			"icon" : "http://via.placeholder.com/300?text=book+icon+id:75"
 		},
 		{
 			"ID" : 114,
-			"icon" : "http://via.placeholder.com/300x300"
+			"icon" : "http://via.placeholder.com/300?text=book+icon+id:114"
 		},
 		{
 			"ID" : 100,
-			"icon" : "http://via.placeholder.com/300x300"
+			"icon" : "http://via.placeholder.com/300?text=book+icon+id:100"
 		}
 	];
 }
