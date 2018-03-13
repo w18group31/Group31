@@ -52,11 +52,32 @@ app.get('/renderBook/:bookId', function(req, res){
 	});
 });
 
+app.get('/renderQuiz/:quizId', function(req, res){
+	context = {};
+	context.quizId = req.params.quizId;
+	context.jscript = ['takeQuiz.js'];
+	// query book db for book id, then call callback function for response
+	DB.select.quiz(req.params.quizId, function(dbResult) { 
+		context.quiz = dbResult;
+
+		//Currently displays the bookId that was selected
+		res.render('renderQuizContext', context);
+	});
+});
 
 // api endpoint for JSON book data
 app.get("/api/json/book/:bookId", function(req, res) {
 	// query db for book id
 	DB.select.book(req.params.bookId, function(dbResult) { 
+		// send the JSON result as the response
+		res.send(dbResult);
+	});
+});
+
+// api endpoint for JSON quiz data
+app.get("/api/json/quiz/:quizId", function(req, res) {
+	// query db for quiz id
+	DB.select.quiz(req.params.quizId, function(dbResult) { 
 		// send the JSON result as the response
 		res.send(dbResult);
 	});

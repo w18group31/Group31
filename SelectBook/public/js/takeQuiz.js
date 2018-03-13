@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", onload);
 
-// url to get book data from server
-const BOOK_URL = "/api/json/book/";
+// url to get quiz data from server
+const QUIZ_URL = "/api/json/quiz/";
 // tracks current page of book
-var currentPage = 1;
-// holds current book
-var book;
-// holds current page
-var page;
-// flag if book is started
+var currentQuestionPage = 1;
+// holds current quiz
+var quiz;
+// holds current question
+var question;
+// flag if quiz is started
 var started = false;
 
 // ajax function to get data from server
@@ -81,8 +81,8 @@ function appendButton(container, text, onclickFunc) {
 	btn.addEventListener("click", onclickFunc);
 }
 
-// render page
-function renderPage() {
+// render question
+function renderQuestion() {
 	// grab the location the page content shall go
 	var node = document.getElementById("page");
 	//Hide the book info if visible
@@ -96,32 +96,21 @@ function renderPage() {
 	var head = document.createElement("H3");
 	// add the page head property to this
 	node.appendChild(head);
-	head.innerHTML = page.head;
+	head.innerHTML = question.question;
 
-	// loop through all the pages paragraphs
-	for(var i = 0; i < page.paras.length; i++) {
-		// create a new paragraph element for each page.para property
-		var para = document.createElement("P");
-		// add the page text to the paragraph element
-		para.innerHTML = page.paras[i]
+	// loop through all the questions choices
+	for(var i = 0; i < question.choices.length; i++) {
+		// create a new div element for each choice property
+		var div = document.createElement("DIV");
+		// add the choicee text to the div element
+		div.innerHTML = question.choices[i].txt;
 		// append the paragraph to the page
-		node.appendChild(para);
+		node.appendChild(div);
 	}
 
-	// loop through pages images
-	for(var i = 0; i < page.imgs.length; i++) {
-		// create an new img element for each image in page.para property
-		var img = document.createElement("IMG");
-		// set the src attribute for the image
-		img.setAttribute("src", page.imgs[i].src);
-		img.classList.add("img-responsive");
-		// append the image to the page
-		node.appendChild(img);
-	}
-
-	// check if the book has been started
+	// check if the quiz has been started
 	if(!started) {
-		// if not started, clear out the nave container (start button)
+		// if not started, clear out the nav container (start button)
 		document.getElementById("nav").innerHTML = "";
 		// call function to append back button to nav container
 		appendButton("nav", "< Back", backButton)
@@ -133,23 +122,23 @@ function renderPage() {
 }
 
 function onload() {
-	// grab the book id from the browser's current url string
-	var bookId = window.location.href.split("/").pop();
-	// make ajax request to get the book with the id 
-	ajaxGet(BOOK_URL + bookId, function(res) {
-		// set the book flag to be not started
+	// grab the quiz id from the browser's current url string
+	var quizId = window.location.href.split("/").pop();
+	// make ajax request to get the quiz with the id 
+	ajaxGet(QUIZ_URL + quizId, function(res) {
+		// set the quiz flag to be not started
 		started = false;
-		// set the current page to 1
-		currentPage = 1;
-		// save the response to the book var
-		book = res;
-		// fetch the current page
-		page = book.pages.find(pages => pages.page === currentPage);
+		// set the current question to 1
+		currentQuestion = 0;
+		// save the response to the quiz var
+		quiz = res;
+		// fetch the current question
+		question = quiz.questions[currentQuestion];
 
 
 		// add listener to start book btn, render page once its clicked
-		document.getElementById("start-book-btn")
-			.addEventListener("click", renderPage);
+		document.getElementById("start-quiz-btn")
+			.addEventListener("click", renderQuestion);
 
 	});
 		
