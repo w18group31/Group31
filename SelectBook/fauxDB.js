@@ -13,7 +13,8 @@ var books = [
 					"There once was a little cat that jumped over a hat. Once the cat got over the hat, it tripped over a baseball bat",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-2024026", },
+					{ src: "/imgs/cat001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-2024026", },
 				],
 				audio: [],
 			},
@@ -25,7 +26,8 @@ var books = [
 					"There once was a big dog t",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-2029284" },
+					{ src: "/imgs/dog001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-2029284" },
 				],
 				audio: [],
 			},
@@ -36,7 +38,8 @@ var books = [
 					"The goat rowed a small wooden boat across the archduke's moat. All of a sudden the boad decided to no longer float and the goat had to put on his life coat.",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-297028", },
+					{ src: "/imgs/goat001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-297028", },
 				],
 				audio: [],
 
@@ -48,7 +51,8 @@ var books = [
 					"There was a second little cat that jumped over the same hat. Once the second cat got over the same hat, it tripped over the same baseball bat.",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-30746", },
+					{ src: "/imgs/cat002.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-30746", },
 				],
 				audio: [],
 			},
@@ -59,7 +63,8 @@ var books = [
 					"There once was a little frog that went for a long walk in the fog. The frog could not see through the fog and it hopped into a dog.",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-2740933", },
+					{ src: "/imgs/frog001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-2740933", },
 				],
 				audio: [],
 			},
@@ -79,7 +84,8 @@ var books = [
 					"There once was a little cat that jumped over a hat. Once the cat got over the hat, it tripped over a baseball bat",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-2024026", },
+					{ src: "/imgs/cat001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-2024026", },
 				],
 				audio: [],
 			},
@@ -91,7 +97,8 @@ var books = [
 					"There once was a big dog t",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-2029284" },
+					{ src: "/imgs/dog001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-2029284" },
 				],
 				audio: [],
 			},
@@ -102,7 +109,8 @@ var books = [
 					"The goat rowed a small wooden boat across the archduke's moat. All of a sudden the boad decided to no longer float and the goat had to put on his life coat.",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-297028", },
+					{ src: "/imgs/goat001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-297028", },
 				],
 				audio: [],
 
@@ -114,7 +122,8 @@ var books = [
 					"There was a second little cat that jumped over the same hat. Once the second cat got over the same hat, it tripped over the same baseball bat.",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-30746", },
+					{ src: "/imgs/cat002.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-30746", },
 				],
 				audio: [],
 			},
@@ -125,7 +134,8 @@ var books = [
 					"There once was a little frog that went for a long walk in the fog. The frog could not see through the fog and it hopped into a dog.",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-2740933", },
+					{ src: "/imgs/frog001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-2740933", },
 				],
 				audio: [],
 			},
@@ -145,7 +155,8 @@ var books = [
 					"There once was a little cat that jumped over a hat. Once the cat got over the hat, it tripped over a baseball bat",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-2024026", },
+					{ src: "/imgs/cat001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-2024026", },
 				],
 				audio: [],
 			},
@@ -157,7 +168,8 @@ var books = [
 					"There once was a big dog t",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-2029284" },
+					{ src: "/imgs/dog001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-2029284" },
 				],
 				audio: [],
 			},
@@ -168,7 +180,8 @@ var books = [
 					"The goat rowed a small wooden boat across the archduke's moat. All of a sudden the boad decided to no longer float and the goat had to put on his life coat.",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-297028", },
+					{ src: "/imgs/goat001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-297028", },
 				],
 				audio: [],
 
@@ -180,7 +193,8 @@ var books = [
 					"There was a second little cat that jumped over the same hat. Once the second cat got over the same hat, it tripped over the same baseball bat.",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-30746", },
+					{ src: "/imgs/cat002.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-30746", },
 				],
 				audio: [],
 			},
@@ -191,7 +205,8 @@ var books = [
 					"There once was a little frog that went for a long walk in the fog. The frog could not see through the fog and it hopped into a dog.",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-2740933", },
+					{ src: "/imgs/frog001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-2740933", },
 				],
 				audio: [],
 			},
@@ -211,7 +226,8 @@ var books = [
 					"There once was a little cat that jumped over a hat. Once the cat got over the hat, it tripped over a baseball bat",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-2024026", },
+					{ src: "/imgs/cat001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-2024026", },
 				],
 				audio: [],
 			},
@@ -223,7 +239,8 @@ var books = [
 					"There once was a big dog t",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-2029284" },
+					{ src: "/imgs/dog001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-2029284" },
 				],
 				audio: [],
 			},
@@ -234,7 +251,8 @@ var books = [
 					"The goat rowed a small wooden boat across the archduke's moat. All of a sudden the boad decided to no longer float and the goat had to put on his life coat.",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-297028", },
+					{ src: "/imgs/goat001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-297028", },
 				],
 				audio: [],
 
@@ -246,7 +264,8 @@ var books = [
 					"There was a second little cat that jumped over the same hat. Once the second cat got over the same hat, it tripped over the same baseball bat.",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-30746", },
+					{ src: "/imgs/cat002.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-30746", },
 				],
 				audio: [],
 			},
@@ -257,7 +276,8 @@ var books = [
 					"There once was a little frog that went for a long walk in the fog. The frog could not see through the fog and it hopped into a dog.",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-2740933", },
+					{ src: "/imgs/frog001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-2740933", },
 				],
 				audio: [],
 			},
@@ -277,7 +297,8 @@ var books = [
 					"There once was a little cat that jumped over a hat. Once the cat got over the hat, it tripped over a baseball bat",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-2024026", },
+					{ src: "/imgs/cat001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-2024026", },
 				],
 				audio: [],
 			},
@@ -289,7 +310,8 @@ var books = [
 					"There once was a big dog t",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-2029284" },
+					{ src: "/imgs/dog001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-2029284" },
 				],
 				audio: [],
 			},
@@ -300,7 +322,8 @@ var books = [
 					"The goat rowed a small wooden boat across the archduke's moat. All of a sudden the boad decided to no longer float and the goat had to put on his life coat.",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-297028", },
+					{ src: "/imgs/goat001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-297028", },
 				],
 				audio: [],
 
@@ -312,7 +335,8 @@ var books = [
 					"There was a second little cat that jumped over the same hat. Once the second cat got over the same hat, it tripped over the same baseball bat.",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-30746", },
+					{ src: "/imgs/cat002.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-30746", },
 				],
 				audio: [],
 			},
@@ -323,7 +347,8 @@ var books = [
 					"There once was a little frog that went for a long walk in the fog. The frog could not see through the fog and it hopped into a dog.",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-2740933", },
+					{ src: "/imgs/frog001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-2740933", },
 				],
 				audio: [],
 			},
@@ -343,7 +368,8 @@ var books = [
 					"There once was a little cat that jumped over a hat. Once the cat got over the hat, it tripped over a baseball bat",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-2024026", },
+					{ src: "/imgs/cat001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-2024026", },
 				],
 				audio: [],
 			},
@@ -355,7 +381,8 @@ var books = [
 					"There once was a big dog t",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-2029284" },
+					{ src: "/imgs/dog001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-2029284" },
 				],
 				audio: [],
 			},
@@ -366,7 +393,8 @@ var books = [
 					"The goat rowed a small wooden boat across the archduke's moat. All of a sudden the boad decided to no longer float and the goat had to put on his life coat.",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-297028", },
+					{ src: "/imgs/goat001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-297028", },
 				],
 				audio: [],
 
@@ -378,7 +406,8 @@ var books = [
 					"There was a second little cat that jumped over the same hat. Once the second cat got over the same hat, it tripped over the same baseball bat.",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-30746", },
+					{ src: "/imgs/cat002.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-30746", },
 				],
 				audio: [],
 			},
@@ -389,7 +418,8 @@ var books = [
 					"There once was a little frog that went for a long walk in the fog. The frog could not see through the fog and it hopped into a dog.",
 				],
 				imgs: [
-					{ src: "http://www.photosforclass.com/download/pixabay-2740933", },
+					{ src: "/imgs/frog001.png", },
+					//{ src: "http://www.photosforclass.com/download/pixabay-2740933", },
 				],
 				audio: [],
 			},
