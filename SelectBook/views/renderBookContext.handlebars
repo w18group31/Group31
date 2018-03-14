@@ -1,6 +1,6 @@
 <!--Driver page to display book selected to test functionality-->
-<div class="container" >
-	<div class="col-sm-6 col-sm-offset-3" id = "bookInfo">
+<div class="container" id = "bookInfo">
+	<div class="col-sm-6 col-sm-offset-3" >
 
 		<h2>You have selected book ID:{{bookId}}</h2>
 
@@ -10,11 +10,22 @@
 		<h5>Year: {{book.year}}</h5>
 
 	</div>
-	<div id="page" class="col-sm-6 col-sm-offset-3">
-	</div>
-</div>
-<div class="container">
 	<div id="nav" class="col-sm-4 col-sm-offset-4">
 		<button id="start-book-btn" type="button" class="btn btn-default">Start Book</button>
 	</div>
 </div>
+</div>
+<div id="bookContent" class="container">
+	<div id="pageHeader" class="col-xs-12 pageContent">
+	</div>
+	<div id="backBtn" class="col-sm-1 turnPgBtn">
+	</div>
+	<div id="pageText" class="col-sm-4 pageContent">
+	</div>
+	<div id="pageImg" class="col-sm-4 pageContent">
+	</div>
+	<div id="nextBtn" class="col-sm-1 turnPgBtn">
+	</div>
+</div>
+
+
