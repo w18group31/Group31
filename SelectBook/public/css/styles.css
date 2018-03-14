@@ -72,3 +72,10 @@ footer p{
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+/********************* QUIZ *********************/
+
+.choice {
+	padding-left: 30px;
+
+}

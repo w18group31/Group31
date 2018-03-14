@@ -36,7 +36,7 @@ var quizes = [
 						txt: "Bark" 
 					},
 				],
-				answer: "Bark",
+				answer: "Walk",
 			},
 			{
 				question: "How many cats were in the story?",

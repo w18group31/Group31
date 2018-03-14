@@ -52,6 +52,7 @@ app.get('/renderBook/:bookId', function(req, res){
 	});
 });
 
+
 app.get('/renderQuiz/:quizId', function(req, res){
 	context = {};
 	context.quizId = req.params.quizId;
@@ -65,6 +66,7 @@ app.get('/renderQuiz/:quizId', function(req, res){
 	});
 });
 
+
 // api endpoint for JSON book data
 app.get("/api/json/book/:bookId", function(req, res) {
 	// query db for book id
@@ -73,6 +75,7 @@ app.get("/api/json/book/:bookId", function(req, res) {
 		res.send(dbResult);
 	});
 });
+
 
 // api endpoint for JSON quiz data
 app.get("/api/json/quiz/:quizId", function(req, res) {

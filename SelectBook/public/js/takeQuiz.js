@@ -11,6 +11,10 @@ var question;
 // flag if quiz is started
 var started = false;
 
+var answered;
+
+var questionCount;
+
 // ajax function to get data from server
 function ajaxGet(url, callback) {
 	// log the url endpoint request is being sent to
@@ -37,31 +41,33 @@ function ajaxGet(url, callback) {
 // function to advance page
 function nextButton() {
 	// incriment current page by one
-	currentPage += 1;
+	currentQuestion += 1;
 	// if page number is greater than page count, set curr page to page count
-	if(currentPage > book.pages.length) {
-		currentPage = book.pages.length;
+	if(currentQuestion > quiz.questions.length - 1) {
+		currentQuestion = quiz.questions.length - 1;
 	}
 
 	// fetch the new page
-	page = book.pages.find(pages => pages.page === currentPage);
+	//question = quiz.questions.find(questions => questions.question === currentQuestion);
+	question = quiz.questions[currentQuestion];
 	// call to render the new page
-	renderPage();
+	renderQuestion();
 }
 
 // function to go back a page
 function backButton() {
 	// decrement current page by one
-	currentPage -= 1;
+	currentQuestion -= 1;
 	// if page count is less then one, set curr page to first page
-	if(currentPage < 1) {
-		currentPage = 1;
+	if(currentQuestion < 0) {
+		currentQuestion = 0;
 	}
 
 	// fetch the new page
-	page = book.pages.find(pages => pages.page === currentPage);
+	//page = book.pages.find(pages => pages.page === currentPage);
+	question = quiz.questions[currentQuestion];
 	// call to render the new page
-	renderPage();
+	renderQuestion();
 }
 
 // add a button to the document
@@ -83,30 +89,114 @@ function appendButton(container, text, onclickFunc) {
 
 // render question
 function renderQuestion() {
-	// grab the location the page content shall go
-	var node = document.getElementById("page");
 	//Hide the book info if visible
-	if($('#bookInfo').is(":visible")){
-		$('#bookInfo').hide();
+	if($('#quizInfo').is(":visible")){
+		$('#quizInfo').hide();
 	}
-	// clear it out (may be a cleaner way to do this)
-	node.innerHTML = "";	
 
-	// create a head element
-	var head = document.createElement("H3");
-	// add the page head property to this
-	node.appendChild(head);
-	head.innerHTML = question.question;
+	// select id page to add quiz	
+	var node = d3.select("#page");
 
-	// loop through all the questions choices
-	for(var i = 0; i < question.choices.length; i++) {
-		// create a new div element for each choice property
-		var div = document.createElement("DIV");
-		// add the choicee text to the div element
-		div.innerHTML = question.choices[i].txt;
-		// append the paragraph to the page
-		node.appendChild(div);
-	}
+	// select all elements with class of 'question'
+	var q = node.selectAll(".question")
+		// bind quiz question to the elements in selection
+		.data([question]);
+
+	// select all elements with class of 'choice'
+	var c = node.selectAll(".choice")
+		// bind all choices for question to selection
+		.data(question.choices);
+
+
+	// perform this when a new question occures
+	q.enter()
+		// append a header 3
+		.append("h3")
+		// give header a class of question
+		.attr("class", "question")
+		// begin the element with zero transparency
+		.style("opacity", 0)
+		// add the question and question number to the element's html
+		.html(function(d) { return (currentQuestion + 1) + ") " + d.question; } )
+		// transition the elments transparency to 100 % over .75 seconds
+		.transition()
+		.duration(750)
+		.style("opacity", 1)
+
+	
+	// perform this when a new choice occurs
+	c.enter()
+		// append a div
+		.append("div")
+		// give div a class of choice
+		.attr("class", "choice")
+		// begin the div with a zero transparency
+		.style("opacity", 0)
+		// add choice and letter (a, b, c, d...) to div's html
+		.html(function(d) { 
+			var i = question.choices.map(function(e) { return e.txt } ).indexOf(d.txt)
+			var letter = "abcdefgh".slice(i, i + 1);
+			return letter + ") " + d.txt; 
+		})
+		// add on click function to div
+		.on("click", function(d) { 
+			quiz.questions[currentQuestion].response = d.txt;
+			checkAnswer();
+		})
+		// transition the elments transparency to 100 % over .75 seconds
+		.transition()
+		.duration(750)
+		.style("opacity", 1)
+
+
+	// perform this when updating questions
+	q.transition()
+		// over .75 seconds, fade the text to zero transparancy
+		.duration(750)
+		.style("opacity", 0)
+		// once at 0 transparency, perform the following
+		.on("end", function() {
+			// update the html of the text, then return the transparncey to 100 %
+			d3.select(this)
+				.html(function(d, i) { return (currentQuestion + 1) + ") " + d.question; } )
+				.transition()
+				.duration(750)
+				.style("opacity", 1)
+		});
+
+	// perform this when updating choices
+	c.transition()
+		// over .75 seconds, fade the text to zero transparancy
+		.duration(750)
+		.style("opacity", 0)
+		// once at 0 transparency, perform the following
+		.on("end", function() {
+			// update the html of the div, then return the transparncey to 100 %
+			d3.select(this)
+				.html(function(d) { 
+					var i = question.choices.map(function(e) { return e.txt } ).indexOf(d.txt)
+					var letter = "abcdefgh".slice(i, i + 1);
+					return letter + ") " + d.txt; 
+				})
+				// add on click function to div
+				.on("click", function(d) { 
+					quiz.questions[currentQuestion].response = d.txt;
+					checkAnswer();
+				})
+				.transition()
+				.duration(750)
+				.style("opacity", 1)
+		});
+
+	// perform this when updating questions (say q3 has 4 choices, buth q4 only has 2 choices)
+	c.exit()
+		// over .75 seconds, fade the text to zero transparancy
+		.transition()
+		.duration(750)
+		.style("opacity", 0)
+		// reomve the element from the dom
+		.remove();
+
 
 	// check if the quiz has been started
 	if(!started) {
@@ -118,6 +208,16 @@ function renderQuestion() {
 		appendButton("nav", "Next >", nextButton)
 		// set stared flag to true
 		started = true;
+	}
+
+}
+
+
+function checkAnswer() {
+	if(quiz.questions[currentQuestion].response == quiz.questions[currentQuestion].answer) {
+		alert("Very Good");
+	} else {
+		alert("Please Try Again");
 	}
 }
 
@@ -135,6 +235,9 @@ function onload() {
 		// fetch the current question
 		question = quiz.questions[currentQuestion];
 
+		answered = 0;
+
+		questionCount = quiz.questions.length;
 
 		// add listener to start book btn, render page once its clicked
 		document.getElementById("start-quiz-btn")
