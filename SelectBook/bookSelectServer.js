@@ -86,6 +86,17 @@ app.get("/api/json/quiz/:quizId", function(req, res) {
 	});
 });
 
+app.post("/api/json/quizSubmit/:quizId", function(req, res){
+	context = {};
+
+	//Server Will store data and update user account
+	//Including marking the book as read so that it will not show up
+	//On the book select screen This functinality will be implemented later
+	console.log(req.body);
+	//Server will respond with success so the client can render the results
+	res.status(200);
+	res.send();
+});
 
 app.use(function(req,res){
   res.status(404);

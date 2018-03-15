@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", onload);
 
 // url to get quiz data from server
 const QUIZ_URL = "/api/json/quiz/";
+const SUBMIT_URL = "/api/json/quizSubmit/";
 // tracks current page of book
 
 
@@ -28,23 +29,48 @@ function ajaxGet(url, callback) {
 	req.send();
 }
 
+// ajax function to post data to the server
+function ajaxPost(url, payload, callback) {
+	// log the url endpoint request is being sent to
+	console.log(url);
+	// create new ajax request object
+	var req = new XMLHttpRequest();
+	// get request to url that is async
+	req.open("POST", url, true);
+	req.setRequestHeader('Content-Type', 'application/json');
+	// add listener for the response
+	req.addEventListener("load", function(event) {
+		// save ther response to a var (this is json)
+		console.log("ajax response:", req);
+		//res = JSON.parse(req.responseText);
+		// log the resoponse to the console
+		//console.log("ajax response:", res);
+		// perform this callback function with the response once its recieved
+		callback(req);
+	});
+
+	// send request to server
+	req.send(JSON.stringify(payload));
+}
+
 function startQuiz(quiz){
 	var currentQuestion = 0;
 	// holds current question
 	var question = quiz.questions[currentQuestion];
 	// flag if quiz is started
 	var started = false;
+	var preMissed = false;
 
-	var answered;
+	var results = {};
 
-	var questionCount;
+	results.quizId = quiz.ID;
+	results.questionCount = quiz.questions.length;
+	results.correctAnswers = 0;
+	results.missedQuestions = [];	
 
 	// render question
 	function renderQuestion() {
-		//Hide the book info if visible
-		if($('#quizInfo').is(":visible")){
-			$('#quizInfo').hide();
-		}
+
 
 		// select id page to add quiz	
 		var node = d3.select("#page");
@@ -152,6 +178,10 @@ function startQuiz(quiz){
 
 		// check if the quiz has been started
 		if(!started) {
+			//Hide the book info if visible
+			if($('#quizInfo').is(":visible")){
+				$('#quizInfo').hide();
+			}
 			// if not started, clear out the nav container (start button)
 			document.getElementById("nav").innerHTML = "";
 			started = true;
@@ -165,36 +195,64 @@ function startQuiz(quiz){
 			//****************************************************************************************************
 			//****************     Alerts aren't touch friendly should change to modals       ********************
 			//****************************************************************************************************
-
+			results.correctAnswers++;
 			alert("Very Good");
-			if(currentQuestion < quiz.questions.length - 1)
-				nextQuestion();
-			else
-				endQuiz();
+			preMissed = false;
+			nextQuestion();
 		} else {
-			alert("Please Try Again");
+			if(!preMissed){
+				alert("Please Try Again");
+				preMissed = true;
+			}
+			else{
+				preMissed = false;
+				results.missedQuestions.push(currentQuestion);
+				alert("Not Quite But Its Okay");
+				nextQuestion();
+			}
 		}
 	}
 
 
 	function nextQuestion() {
 		// incriment current page by one
-		currentQuestion += 1;
+
 		// if page number is greater than page count, set curr page to page count
-		if(currentQuestion > quiz.questions.length - 1) {
-			currentQuestion = quiz.questions.length - 1;
+		if(currentQuestion >= quiz.questions.length - 1) {
+			endQuiz();
+		}
+		else{
+			currentQuestion++;
+			question = quiz.questions[currentQuestion];
+			// call to render the new page
+			renderQuestion();
 		}
 
-		question = quiz.questions[currentQuestion];
-		// call to render the new page
-		renderQuestion();
 	}
 
 	function endQuiz(){
-			//****************************************************************************************************
-		//******************Fix This Needs to send results to Server which will load a quiz finish screen***********************
-			//****************************************************************************************************
-		window.location.assign("/bookSelect");
+		console.log(results);
+		ajaxPost(SUBMIT_URL + quiz.ID, results, function(res){
+			if(res.responseText === "success"){
+				renderFinish("success");
+			}
+			else{
+				renderFinish("error");
+			}
+		 });
+	}
+
+	//Renders the book success screen and allows user to return to book select
+	function renderFinish(status){
+		//Possibly use status to change render if server failed to respond
+		$("#page").html('');
+		$('#page').append(
+			$("<h1>").text('Great Job!!'),
+			$("<button>").text("Read More").on('click', function(){
+				window.location.href="/bookSelect";
+			})
+		);
+
 	}
 
 	renderQuestion();
@@ -212,6 +270,4 @@ function onload() {
 
 	});
 		
-
-
 }
