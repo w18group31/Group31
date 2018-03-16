@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", onload);
 
+// dummy user id to simulate user taking quiz
+const FAUX_USER_ID = 676;
+
 // url to get quiz data from server
 const QUIZ_URL = "/api/json/quiz/";
 const SUBMIT_URL = "/api/json/quizSubmit/";
@@ -232,7 +235,7 @@ function startQuiz(quiz){
 
 	function endQuiz(){
 		console.log(results);
-		ajaxPost(SUBMIT_URL + quiz.ID, results, function(res){
+		ajaxPost(SUBMIT_URL + FAUX_USER_ID + "/" + quiz.ID, results, function(res){
 			if(res.responseText === "success"){
 				renderFinish("success");
 			}

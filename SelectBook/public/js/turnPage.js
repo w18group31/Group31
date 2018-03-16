@@ -65,6 +65,8 @@ function startBook(book){
 	// render page
 	function renderPage() {
 
+
+
 		$('.pageContent').html('');
 		$('#pageHeader').append(
 			$('<h3>').text(book.pages[currentPage].head)
@@ -107,7 +109,8 @@ function startBook(book){
 	}
 
 	function endBook(){
-		window.location.assign('/renderQuiz/' +bookId);
+		var quizId = book.quizzes[Math.floor(Math.random() * book.quizzes.length)];
+		window.location.assign('/renderQuiz/' + quizId);
 	}
 	renderPage();
 }
