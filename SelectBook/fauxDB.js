@@ -1,4 +1,23 @@
-var quizes = [
+var users = [
+	{
+		ID: 676,
+		first: "testie",
+		middle: "t.",
+		last: "testerson",
+		dob: new Date("2013-07-06"),
+		books: [
+
+		],
+		quizzes: [
+
+		],
+
+	},
+
+];
+
+
+var quizzes = [
 	{
 		ID: 927,
 		questions: [
@@ -280,7 +299,7 @@ var books = [
 		subject: "Cats",
 		author: "Randy Roo Coon",
 		year: 2008,
-		quizes: [ 927, 929, 933, ],
+		quizzes: [ 927, 929, 933, ],
 		pages: [
 			{
 				page: 1,
@@ -352,7 +371,7 @@ var books = [
 		subject: "Dogs",
 		author: "Lizzy Lou Loo",
 		year: 2009,
-		quizes: [ 927, 929, 933, ],
+		quizzes: [ 927, 929, 933, ],
 		pages: [
 			{
 				page: 1,
@@ -424,7 +443,7 @@ var books = [
 		subject: "Lambs",
 		author: "Bambi Boo Boo",
 		year: 1987,
-		quizes: [ 927, 929, 933, ],
+		quizzes: [ 927, 929, 933, ],
 		pages: [
 			{
 				page: 1,
@@ -496,7 +515,7 @@ var books = [
 		subject: "Skunk",
 		author: "Skinny Skunky Skunk",
 		year: 1937,
-		quizes: [ 927, 929, 933, ],
+		quizzes: [ 927, 929, 933, ],
 		pages: [
 			{
 				page: 1,
@@ -568,7 +587,7 @@ var books = [
 		subject: "Worm",
 		author: "Hermie the Worm",
 		year: 1999,
-		quizes: [ 927, 929, 933, ],
+		quizzes: [ 927, 929, 933, ],
 		pages: [
 			{
 				page: 1,
@@ -640,7 +659,7 @@ var books = [
 		subject: "Lizzard",
 		author: "Larry the Lizzard",
 		year: 1937,
-		quizes: [ 927, 929, 933, ],
+		quizzes: [ 927, 929, 933, ],
 		pages: [
 			{
 				page: 1,
@@ -708,6 +727,13 @@ var books = [
     	},
 ];
 
+function fetchUser(userID) {
+	for(var i = 0; i < users.length; i++) {
+		if(users[i].ID == userID) {
+			return i;
+		}
+	}
+}
 
 exports.select = {
 	book: function(tgtID, callback) {
@@ -719,11 +745,32 @@ exports.select = {
 		}
 	},
 	quiz: function(tgtID, callback) {
-		for(var i = 0; i < quizes.length; i++) {
-			if(quizes[i].ID == tgtID) {
-				var dbResponse = quizes[i];
+		for(var i = 0; i < quizzes.length; i++) {
+			if(quizzes[i].ID == tgtID) {
+				var dbResponse = quizzes[i];
 				callback( dbResponse );
 			}
 		}
 	},
 }
+
+exports.insert = {
+	user: {
+		quizzes: function(userID, quizResult, callback) {
+			quizResult.quizDT = new Date();
+			console.log("\n****\nInserting into userID ", userID, ":")
+			console.log(quizResult);
+
+			console.log("\n****\n");
+
+			users[fetchUser(userID)]
+				.quizzes.push(quizResult);
+
+			console.log("Updated user recored:")
+			console.log(users[fetchUser(userID)]);
+
+			console.log("\n****\n");
+		}
+	}
+}
+

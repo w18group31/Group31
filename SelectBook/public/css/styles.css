@@ -40,6 +40,24 @@ p {
 	padding: 15px;
 }
 
+/********************* RENDER BOOK **********************/
+
+.button{
+	cursor: pointer;
+}
+
+.turnPgBtn{
+
+	text-align: center;
+}
+.turnPgBtn p{
+	font-size: 80px;
+}
+
+#pageHeader{
+	text-align: center;
+}
+
 /*********************BOOK SELECT *********************/
 
 .bookIcon{
@@ -77,5 +95,10 @@ footer p{
 
 .choice {
 	padding-left: 30px;
+	text-align: center;
+	font-size: 20px;
+	border:2px solid black;
+	border-radius: 20px;
 
 }
+
