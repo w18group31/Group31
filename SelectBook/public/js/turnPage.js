@@ -30,6 +30,7 @@ function ajaxGet(url, callback) {
 }
 
 function startBook(book){
+	console.log(book.ID);
 	// tracks current page of book
 	var currentPage = 0;
 	// holds current page
@@ -64,8 +65,6 @@ function startBook(book){
 
 	// render page
 	function renderPage() {
-
-
 
 		$('.pageContent').html('');
 		$('#pageHeader').append(
@@ -110,6 +109,7 @@ function startBook(book){
 
 	function endBook(){
 		var quizId = book.quizzes[Math.floor(Math.random() * book.quizzes.length)];
+		console.log(quizId);
 		window.location.assign('/renderQuiz/' + quizId);
 	}
 	renderPage();
